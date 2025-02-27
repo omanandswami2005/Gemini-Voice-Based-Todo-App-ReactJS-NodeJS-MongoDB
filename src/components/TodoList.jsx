@@ -1,12 +1,12 @@
 // src/components/TodoList.jsx
 import React, { useState, useEffect } from "react";
-import { useLiveAPIContext, ControlTray } from "gemini-multimodal-live-voice-only";
+import { useLiveAPIContext } from "gemini-multimodal-live-voice-only";
 import { createTodo, getTodos, updateTodo, deleteTodo } from "./api";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const TodoList = () => {
-  const { connected, client } = useLiveAPIContext();
+  const { connected, client, connect, disconnect, mute, unmute, muted } = useLiveAPIContext();
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
 
@@ -120,20 +120,19 @@ const TodoList = () => {
   return (
 
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1e3c72] to-[#2a5298]">
-        <ControlTray />
+        
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="bg-gray-900 bg-opacity-50 backdrop-blur-xl p-8 rounded-xl shadow-2xl w-full max-w-lg"
       >
-        
         {/* Title */}
         <h1 className="text-3xl font-extrabold text-gray-100 text-center mb-6">
           Omiii's Todo Manager ✨
         </h1>
 
-        {/* <div className="flex items-center justify-center mb-6 gap-1">
+        <div className="flex items-center justify-center mb-6 gap-1">
           <button onClick={connected ? disconnect : connect} className={`bg-${connected ? "red" : "green"}-500 hover:bg-${connected ? "red" : "green"}-600 text-white font-bold py-2 px-4 rounded mx-9 cursor-pointer`}>
             {connected ? "Disconnect" : "Connect"}
           </button>
@@ -141,7 +140,7 @@ const TodoList = () => {
           <button onClick={muted ? unmute : mute} className={`bg-${muted ? "red" : "green"}-500 hover:bg-${muted ? "red" : "green"}-600 text-white font-bold py-2 px-4 rounded cursor-pointer mx-9`}>
             {muted ? "Unmute" : "Mute"}
           </button>
-        </div> */}
+        </div>
 
 
         {/* Connection Status */}
