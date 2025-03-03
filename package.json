@@ -15,8 +15,10 @@
     "dotenv": "^16.4.7",
     "framer-motion": "^12.4.7",
     "gemini-multimodal-live-voice-only": "^1.1.4",
+    "gsap": "^3.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "scss": "^0.2.4",
     "tailwindcss": "^4.0.9"
   },
   "devDependencies": {
@@ -28,6 +30,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "sass-embedded": "^1.85.1",
     "vite": "^6.2.0"
   }
 }

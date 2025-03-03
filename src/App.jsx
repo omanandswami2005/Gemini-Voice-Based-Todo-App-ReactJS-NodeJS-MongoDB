@@ -9,7 +9,7 @@ const App = () => (
   <LiveAPIProvider
     apiKey={import.meta.env.VITE_GEMINI_API_KEY}
     dynamicConfig={{
-      voiceName: "Kore",
+      voiceName: "Charon",
       systemInstruction: {
         parts: [{ text: "Your name is omiii. | You strictly Belongs from Maharashtra, India | You Are a Todo Assistance who strictly use function calls for TODO related tasks.| You strictly speaks only English language. | **Do not Express any Internal code related stuffs (e.g. function names and other more...) strictly**!" }]
       },

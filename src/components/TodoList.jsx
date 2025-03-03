@@ -4,9 +4,10 @@ import { useLiveAPIContext } from "gemini-multimodal-live-voice-only";
 import { createTodo, getTodos, updateTodo, deleteTodo } from "./api";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
+import RoboAvatar from "./RoboAvatar";
 
 const TodoList = () => {
-  const { connected, client, connect, disconnect, mute, unmute, muted } = useLiveAPIContext();
+  const { connected, client, connect, disconnect, mute, unmute, muted, volume } = useLiveAPIContext();
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
 
@@ -252,6 +253,8 @@ const TodoList = () => {
           </motion.button>
         </div>
       </motion.div>
+
+      <RoboAvatar active={connected} volume={volume} hover={false} />
       
     </div>
   );
