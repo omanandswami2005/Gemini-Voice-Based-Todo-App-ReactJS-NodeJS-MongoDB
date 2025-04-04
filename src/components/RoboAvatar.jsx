@@ -1,19 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import c from "classnames";
-import "./robo-avatar.scss";
+import "./futuristic-indian-avatar.scss";
 
-export default function RoboAvatar({ active, volume, hover, gesture }) {
+export default function FuturisticIndianAvatar({ active, volume, hover, gesture }) {
   const mouthRef = useRef(null);
-  const leftHandRef = useRef(null);
-  const rightHandRef = useRef(null);
+  const leftArmRef = useRef(null);
+  const rightArmRef = useRef(null);
 
   useEffect(() => {
     let timeout = null;
     const update = () => {
       if (mouthRef.current) {
+        // The mouth height simulates speaking by scaling with volume
         const newHeight = Math.min(24, 4 + volume * 200);
         mouthRef.current.style.height = `${newHeight}px`;
-        mouthRef.current.classList.toggle("talking", volume > 0.1);
+        mouthRef.current.classList.toggle("speaking", volume > 0.1);
       }
       timeout = window.setTimeout(update, 100);
     };
@@ -23,28 +24,33 @@ export default function RoboAvatar({ active, volume, hover, gesture }) {
   }, [volume]);
 
   useEffect(() => {
-    if (leftHandRef.current && rightHandRef.current) {
-      leftHandRef.current.className = c("hand left", gesture);
-      rightHandRef.current.className = c("hand right", gesture);
+    if (leftArmRef.current && rightArmRef.current) {
+      leftArmRef.current.className = c("arm left", gesture);
+      rightArmRef.current.className = c("arm right", gesture);
     }
   }, [gesture]);
 
   return (
-    <div className={c("roboAvatar", { active, hover })}>
+    <div className={c("futuristicAvatar", { active, hover })}>
       <div className="head">
-        <div className="eyes">
-          <div className="eye left" />
-          <div className="eye right" />
+        {/* Turban/Headpiece */}
+        <div className="headpiece" />
+        {/* Face */}
+        <div className="face">
+          <div className="eyes">
+            <div className="eye left" />
+            <div className="eye right" />
+          </div>
+          {/* Bindi accent */}
+          <div className="bindi" />
+          <div className="mouth" ref={mouthRef} />
         </div>
-        <div className="mouth" ref={mouthRef} />
       </div>
       <div className="body">
-        <div className="chest">
-          <div className="core" />
-        </div>
-        <div className="hands">
-          <div className="hand left" ref={leftHandRef} />
-          <div className="hand right" ref={rightHandRef} />
+        <div className="upperWear" />
+        <div className="arms">
+          <div className="arm left" ref={leftArmRef} />
+          <div className="arm right" ref={rightArmRef} />
         </div>
       </div>
     </div>
