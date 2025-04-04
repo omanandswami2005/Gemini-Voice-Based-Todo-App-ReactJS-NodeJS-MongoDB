@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import c from "classnames";
-import "./futuristic-indian-avatar.scss";
+import "./robo-avatar.scss";
 
 export default function FuturisticIndianAvatar({ active, volume, hover, gesture }) {
   const mouthRef = useRef(null);
